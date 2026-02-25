@@ -1,4 +1,4 @@
-name: CI / TaskApp
+name: TaskBar
 
 on:
   push:
@@ -55,8 +55,8 @@ jobs:
       # Inicia sesión en Docker Hub usando los secrets del repositorio:
       #   DOCKERHUB_USERNAME → tu usuario de Docker Hub
       #   DOCKERHUB_TOKEN   → Access Token generado en hub.docker.com
-      - name: Login en Docker Hub
-        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      - name: Puto login que no funciona ya 10 veces
+        run: docker login -u ${{ secrets.nombre }} -p ${{ secrets.usuario }}
 
       # Extrae metadatos (tags, labels) automáticamente:
       #   - En main: latest + sha corto (ej. main-a1b2c3d)
