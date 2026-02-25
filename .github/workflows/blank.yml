@@ -56,10 +56,7 @@ jobs:
       #   DOCKERHUB_USERNAME → tu usuario de Docker Hub
       #   DOCKERHUB_TOKEN   → Access Token generado en hub.docker.com
       - name: Login en Docker Hub
-        uses: docker/login-action@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       # Extrae metadatos (tags, labels) automáticamente:
       #   - En main: latest + sha corto (ej. main-a1b2c3d)
