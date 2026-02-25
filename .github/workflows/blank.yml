@@ -72,13 +72,6 @@ jobs:
       # Construye la imagen usando el target "production" del Dockerfile
       # (que incluye los stages test y build internamente) y la sube a Docker Hub
       - name: Build y push imagen de producción
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          target: production
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          # Caché entre ejecuciones usando GitHub Actions cache
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+        run: |
+          docker build --target production -t ${{ secrets.nombre }}/taskapp:latest .
+          docker push ${{ secrets.usuario }}/taskapp:latest
