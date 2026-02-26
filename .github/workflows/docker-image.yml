@@ -52,7 +52,7 @@ jobs:
             type=raw,value=latest
             type=sha,prefix=main-,format=short
 
-      -  name: Build y push imagen de producción
+      -  name: Build y push imagen 
          run: |
             IMAGE=$(echo "${{ secrets.nombre }}/taskapp:latest" | tr '[:upper:]' '[:lower:]')
             docker build --target production -t $IMAGE .
